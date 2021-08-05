@@ -38,7 +38,6 @@ include 'conexao.php';
                 </tr>";
         }
     ?>
-
 </table>
 </body>
 </html>   
