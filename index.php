@@ -1,7 +1,5 @@
 <?php
 include 'conexao.php';
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -35,14 +33,11 @@ include 'conexao.php';
             <td>".$linha['pes_nome']."</td>
             <td>".$linha['pes_CPF']."</td>
             <td>".$linha['pes_funcao']."</td>
-            <td><img src='/edit' width='32px'></td>
-            <td><img src='/delete' width='32px'></td>
+            <td><img src='imagens/edit.png' width='32px'></td>
+            <td><img src='imagens/delete.png' width='32px'></td>
                 </tr>";
         }
-
-
-
-?>
+    ?>
 
 </table>
 </body>
