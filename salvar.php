@@ -1,24 +1,30 @@
 <?php
+
 include 'conexao.php';
 
-/// recebendo dados do usuário
-
+// recebendo dados do formulário
 $nome = $_POST['nome'];
 $cpf = $_POST['cpf'];
 $funcao = $_POST['funcao'];
 
-/// inserir os dados preenchidos no banco de dados
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $sql = "";
+}
 
-$sql = "INSERT INTO 'tb_pessoas' ('pes_id', 'pes_nomes', 'pes_CP', 'pes_funcao') VALUES (null, '$nome', '$cpf', '$funcao');";
-echo $sql;
+// inserir os dados preenchidos no banco de dados
+$sql = "INSERT INTO `tb_pessoas` (`pes_id`, `pes_nome`, `pes_cpf`, `pes_funcao`) VALUES (NULL, '$nome', '$cpf', '$funcao');";
 
-////mysqli_query($conexao, $sql);
+// executar o comando SQL
+mysqli_query($conexao, $sql);
 
-/// Execute o comando
-mysqli_query($conexao, $banco);
-
+mysqli_close($conexao);
 ?>
-<script type = "text/javascript">
-alert("Salvo com sucesso");
-window.location.href="index.php";
- </script>
+
+<script type="text/javascript">
+    // informa que foi salvo
+    alert("Salvo com sucesso!");
+
+    // redireciona para a página anterior
+    window.location.href = "index.php";
+</script>

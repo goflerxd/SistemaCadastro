@@ -1,5 +1,7 @@
 <?php
 include 'conexao.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,12 +12,19 @@ include 'conexao.php';
     <title>PHP com BD</title>
 </head>
 <body>
-<h3>Fórmulário de Acesso e Informações</h3>
+<h4>Fórmulário de Acesso e Informações</h4>
 <form method = 'POST' action='salvar.php'>
-       Id: <input type = "text" name = "id" ><br>
+       Id: <input type = "text" name = "id"><br>
+       <?php
+       if(isset($_GET['id'])){
+       echo "value = " .$_GET['id'];
+       }
+        ?>
        Nome:<input type = "text" name = "nome"><br>
        CPF: <input type = "text" name = "cpf" > <br>
        Função: <input type = "text" name = "funcao" > <br>
+
+      <a href="index.php"><button>Limpar Formulário</button></a>
             <input type = "submit" value = "Salvar Dados">    
 </form>
       <table border="1">
@@ -24,20 +33,28 @@ include 'conexao.php';
         </tr>
 
     <?php
-        $sql = "'SELECT * FROM 'tb_pessoas'";
+        $sql = "SELECT * FROM tb_pessoas";
 
         $resultados = mysqli_query($conexao, $sql);
-        while($linha = $resultados->fetch_assoc()){
+        while ($linha = $resultados->fetch_assoc()){
             echo "<tr>
             <td>".$linha['pes_id']."</td>
-            <td>".$linha['pes_nome']."</td>
+            <td>".$linha['pes_nomes']."</td>
             <td>".$linha['pes_CPF']."</td>
             <td>".$linha['pes_funcao']."</td>
-            <td><img src='imagens/edit.png' width='32px'></td>
-            <td><img src='imagens/delete.png' width='32px'></td>
+            <td>
+            <a = href=edit.php?id=".$linha['pes_id']."'>
+            <img src='imagens/edit.png' width='32px'></a>
+            </td>
+           
+            <td><a = href=excluir.php?id=".$linha['pes_id']."'>
+            <img src='imagens/delete.png' width='32px</a> '>
+            </td>
                 </tr>";
         }
-    ?>
+?>
 </table>
+
+
 </body>
 </html>   

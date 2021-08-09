@@ -11,7 +11,7 @@ $banco = "cadastrosuece";
 
 $conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 if (mysqli_set_charset($conexao, 'UTF8')) {
-    echo " ";
+  $id= "Não conseguiu encontrar charset";
 };
 
 ?>
